@@ -1,0 +1,109 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("Breaking point Hub", "DarkTheme")
+
+--Player
+local Player = Window:NewTab("Player")
+local PlayerSection = Player:NewSection("Player")
+
+
+PlayerSection:NewButton("Walkspeed", "speed", function()
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 100
+end)
+
+PlayerSection:NewButton("jump power", "jump", function()
+    game.Players.LocalPlayer.Character.Humanoid.JumpPower = 100
+end)
+
+PlayerSection:NewButton("Infinite jump", "makes jump high", function()
+    local InfiniteJumpEnabled = true
+    game:GetService("UserInputService").JumpRequest:connect(function()
+        if InfiniteJumpEnabled then
+            game:GetService"Players".LocalPlayer.Character:FindFirstChildOfClass'Humanoid':ChangeState("Jumping")
+        end
+    end)
+end)
+
+PlayerSection:NewButton("noclip", "Press B to noclip", function()
+    pcall(loadstring(game:HttpGet("https://pastebin.com/raw/kt3Nxzw1")))
+end)
+
+PlayerSection:NewButton("Teleport", "Press ctrl and click to tp", function()
+    local Plr = game:GetService("Players").LocalPlayer
+    local Mouse = Plr:GetMouse()
+    
+    Mouse.Button1Down:connect(
+        function()
+            if not game:GetService("UserInputService"):IsKeyDown(Enum.KeyCode.LeftControl) then
+                return
+            end
+            if not Mouse.Target then
+                return
+            end
+            Plr.Character:MoveTo(Mouse.Hit.p)
+        end
+    )
+    
+end)
+
+PlayerSection:NewButton("Btools", "btools", function()
+    Instance.new("HopperBin", game.Players.LocalPlayer.Backpack).BinType = 4
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 20
+end)
+
+-- breakingpoint 
+
+local breakingpoint = Window:NewTab("breaking point")
+local breakingpointSection = breakingpoint:NewSection("breaking point")
+
+breakingpointSection:NewButton("brightness", "light", function()
+    loadstring(game:HttpGet("https://pastebin.com/raw/cBqvxgRH",true))();
+end)
+
+breakingpointSection:NewButton("kill all (gun)", "kill all", function()
+    loadstring(game:HttpGet("https://pastebin.com/raw/Vhikws0z",true))();
+end)
+
+breakingpointSection:NewButton("NightVision", "vision", function()
+    loadstring(game:HttpGet("https://pastebin.com/raw/qzEPbEgq",true))();
+end)
+
+breakingpointSection:NewButton("Anti Die", "Anti Die", function()
+    loadstring(game:HttpGet("https://pastebin.com/raw/cmdQPJjL",true))();
+end)
+
+
+--Autofarm
+local Autofarm = Window:NewTab("Autofarm")
+local AutofarmSection = Autofarm:NewSection("Autofarm")
+
+AutofarmSection:NewButton("auto farm 1 ", "farm 1", function()
+    loadstring(game:HttpGet("https://pastebin.com/raw/xRznQwVu",true))();
+end)
+
+AutofarmSection:NewButton("auto farm 2", "farm 2", function()
+    loadstring(game:HttpGet("https://pastebin.com/raw/PUgRTLPM",true))();
+end)
+
+AutofarmSection:NewButton("Auto farm 3", "farm 3", function()
+    getgenv().AutoFarm = true
+    loadstring(game:HttpGet("https://pastebin.com/raw/S7hgzag4",true))();
+end)
+
+AutofarmSection:NewButton("Auto farm 4", "farm 4", function()
+    loadstring(game:HttpGet("https://pastebin.com/raw/3KD4613m",true))();
+end)
+
+AutofarmSection:NewButton("Auto farm 5", "farm 5", function()
+    loadstring(game:HttpGet("https://pastebin.com/raw/czYpA8dj",true))();
+end)
+
+--Credits
+
+local Credits = Window:NewTab("Credits")
+local CreditsSection = Credits:NewSection("Credits")
+
+CreditsSection:NewLabel("Made by discord:Trigzzy#8305")
+CreditsSection:NewLabel("discord server:https://discord.gg/96DKrytwnY")
+CreditsSection:NewKeybind("Turn Of script", "E", Enum.KeyCode.E, function()
+	Library:ToggleUI()
+end)
